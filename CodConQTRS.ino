@@ -285,3 +285,6 @@ void loop()
   //if ( detectarPatronActual() )
       //respuestaPatronActual();
 }
+
+//http://lamborghino.com/codigo/
+//https://github.com/abrahamjoc/robot-lenin/blob/master/code.ino#L20
