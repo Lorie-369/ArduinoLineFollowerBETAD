@@ -108,9 +108,6 @@ void imprimirsensores()
     Serial.print(sensorValues[2]); Serial.print(" | ");
     Serial.print(sensorValues[3]); Serial.print(" | ");
     Serial.print(sensorValues[4]); Serial.print(" | ");
-    Serial.print(sensorValues[5]); Serial.print(" | ");
-    Serial.print(sensorValues[6]); Serial.print(" | ");
-    Serial.print(sensorValues[7]); Serial.println(" |");
 }
 
 void debugMotorStop()
@@ -154,10 +151,7 @@ boolean patron_todonegro()
     ( sensorValues[1] < U_N ) && 
     ( sensorValues[2] < U_N ) && 
     ( sensorValues[3] < U_N ) && 
-    ( sensorValues[4] < U_N ) && 
-    ( sensorValues[5] < U_N ) && 
-    ( sensorValues[6] < U_N ) && 
-    ( sensorValues[7] < U_N );
+    ( sensorValues[4] < U_N );
 }
 
 boolean patron_todoblanco()
@@ -167,10 +161,7 @@ boolean patron_todoblanco()
     sensorValues[1] > U_N && 
     sensorValues[2] > U_N && 
     sensorValues[3] > U_N && 
-    sensorValues[4] > U_N && 
-    sensorValues[5] > U_N && 
-    sensorValues[6] > U_N && 
-    sensorValues[7] > U_N;
+    sensorValues[4] > U_N;
 }
 ///////////////////////  FIN SECCION PATRONES  /////////////////////
 
@@ -184,7 +175,7 @@ void setup()
 
   // inicializar pines de salida
   pinMode(LEDPIN          ,OUTPUT);
-  pinMode(STANDBY         ,OUTPUT);
+  //pinMode(STANDBY         ,OUTPUT);
   pinMode(MOTORRIGH_DIR_A ,OUTPUT);
   pinMode(MOTORRIGH_DIR_B ,OUTPUT);
   pinMode(MOTORRIGH_PWM   ,OUTPUT);
@@ -246,7 +237,7 @@ void loop()
   position = qtra.readLine(sensorValues);
 
   // El término proporcional debe ser 0 cuando estamos en línea
-  proportional = ((int)position) - 3500;
+  proportional = ((int)position) - 2000;
 
 /*
   // Si entra en el rango de freno aplicarlo en la direccion de la curva
